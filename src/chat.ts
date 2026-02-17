@@ -61,8 +61,16 @@ export async function handleChat(
       // Get the final message
       finalMessage = await stream.finalMessage();
     } catch (error: any) {
+      // Log the error structure for debugging
+      console.error("Caught error in chat handler:", {
+        type: error?.type,
+        errorType: error?.error?.type,
+        message: error?.message,
+        fullError: JSON.stringify(error, null, 2)
+      });
+
       // Handle Claude API overload errors
-      if (error?.error?.type === "overloaded_error") {
+      if (error?.error?.type === "overloaded_error" || error?.type === "overloaded_error") {
         sendEvent(res, "error", {
           message: "The AI service is currently experiencing high demand. Please try again in a moment.",
         });
