@@ -1,0 +1,68 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build application
+      run: npm run build
+
+    - name: Create deployment package
+      run: |
+        mkdir deploy
+        cp -r dist deploy/
+        cp package.json deploy/
+        cp package-lock.json deploy/
+        cp web.config deploy/
+        cd deploy
+        npm ci --omit=dev
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'odp-chat-backend'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ./deploy
+
+    - name: Set environment variables
+      uses: azure/appservice-settings@v1
+      with:
+        app-name: 'odp-chat-backend'
+        app-settings-json: |
+          [
+            {
+              "name": "ANTHROPIC_API_KEY",
+              "value": "${{ secrets.ANTHROPIC_API_KEY }}",
+              "slotSetting": false
+            },
+            {
+              "name": "DOL_API_KEY",
+              "value": "${{ secrets.DOL_API_KEY }}",
+              "slotSetting": false
+            },
+            {
+              "name": "FRONTEND_URL",
+              "value": "${{ secrets.FRONTEND_URL }}",
+              "slotSetting": false
+            }
+          ]
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
