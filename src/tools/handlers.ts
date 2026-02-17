@@ -6,8 +6,9 @@ export async function handleListDatasets({ page }: { page?: number } = {}) {
     page: String(page ?? 1),
   });
 
-  if (!response) {
-    return { error: "Failed to fetch datasets from DOL API" };
+  // Check if response is an error object
+  if ('error' in response) {
+    return response;
   }
 
   try {
@@ -50,8 +51,9 @@ export async function handleGetMetadata({
     `/get/${agency}/${endpoint}/${format ?? "json"}/metadata`
   );
 
-  if (!response) {
-    return { error: `Failed to fetch metadata for ${agency}/${endpoint}` };
+  // Check if response is an error object
+  if ('error' in response) {
+    return response;
   }
 
   return response;
@@ -92,8 +94,9 @@ export async function handleQueryData({
     params
   );
 
-  if (!response) {
-    return { error: `Failed to query data from ${agency}/${endpoint}` };
+  // Check if response is an error object
+  if ('error' in response) {
+    return response;
   }
 
   return response;

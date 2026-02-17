@@ -111,6 +111,27 @@ export async function handleChat(
           result = await handler(toolUse.input);
         }
 
+        // Check for critical errors that should stop execution
+        if (result?.error) {
+          const errorMsg = result.error.toLowerCase();
+
+          // Rate limit error - stop immediately
+          if (errorMsg.includes('429') || errorMsg.includes('rate limit') || errorMsg.includes('too many requests')) {
+            sendEvent(res, "error", {
+              message: "The DOL API is rate limiting requests. Please wait a moment and try again.",
+            });
+            return;
+          }
+
+          // General API failure - stop immediately
+          if (errorMsg.includes('failed to fetch') || errorMsg.includes('api error')) {
+            sendEvent(res, "error", {
+              message: "Unable to connect to the DOL API. Please try again later.",
+            });
+            return;
+          }
+        }
+
         sendEvent(res, "tool_result", { name: toolUse.name });
 
         toolResults.push({

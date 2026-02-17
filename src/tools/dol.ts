@@ -11,7 +11,7 @@ async function delay(ms: number): Promise<void> {
 export async function makeDOLRequest<T>(
   endpoint: string,
   params: Record<string, string> = {}
-): Promise<T | null> {
+): Promise<T | { error: string }> {
   try {
     // Rate limiting: ensure minimum time between requests
     const now = Date.now();
@@ -37,13 +37,23 @@ export async function makeDOLRequest<T>(
 
     if (!response.ok) {
       console.error(`DOL API error: ${response.status} ${response.statusText}`);
-      return null;
+
+      // Return specific error messages based on status code
+      if (response.status === 429) {
+        return { error: "DOL API rate limit exceeded (429). Too many requests." };
+      } else if (response.status >= 500) {
+        return { error: `DOL API server error (${response.status}). The service may be down.` };
+      } else if (response.status === 404) {
+        return { error: `DOL API endpoint not found (404).` };
+      } else {
+        return { error: `DOL API error (${response.status}): ${response.statusText}` };
+      }
     }
 
     const data = await response.json();
     return data as T;
   } catch (error) {
     console.error("DOL request failed:", error);
-    return null;
+    return { error: `Network error connecting to DOL API: ${error}` };
   }
 }
