@@ -36,26 +36,41 @@ export async function handleChat(
   ];
 
   while (true) {
-    const stream = client.messages.stream({
-      model: "claude-sonnet-4-5-20250929",
-      max_tokens: 4096,
-      system: SYSTEM_PROMPT,
-      tools,
-      messages,
-    });
+    let stream;
+    let finalMessage;
 
-    // Stream text deltas
-    for await (const event of stream) {
-      if (
-        event.type === "content_block_delta" &&
-        event.delta.type === "text_delta"
-      ) {
-        sendEvent(res, "text", { delta: event.delta.text });
+    try {
+      stream = client.messages.stream({
+        model: "claude-sonnet-4-5-20250929",
+        max_tokens: 4096,
+        system: SYSTEM_PROMPT,
+        tools,
+        messages,
+      });
+
+      // Stream text deltas
+      for await (const event of stream) {
+        if (
+          event.type === "content_block_delta" &&
+          event.delta.type === "text_delta"
+        ) {
+          sendEvent(res, "text", { delta: event.delta.text });
+        }
       }
-    }
 
-    // Get the final message
-    const finalMessage = await stream.finalMessage();
+      // Get the final message
+      finalMessage = await stream.finalMessage();
+    } catch (error: any) {
+      // Handle Claude API overload errors
+      if (error?.error?.type === "overloaded_error") {
+        sendEvent(res, "error", {
+          message: "The AI service is currently experiencing high demand. Please try again in a moment.",
+        });
+        return;
+      }
+      // Re-throw other errors
+      throw error;
+    }
 
     // Extract tool use blocks
     const toolUseBlocks = finalMessage.content.filter(
