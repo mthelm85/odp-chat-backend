@@ -1,0 +1,296 @@
+[
+  {
+    "name": "Child Labor Report (2016 to 2022)",
+    "agency": "ILAB",
+    "endpoint": "Child_Labor_Report__2016_to_2022",
+    "description": "Information on child labor and forced labor worldwide from ILAB's three flagship reports: Findings on the Worst Forms of Child Labor; List of Goods Produced by Child Labor or Forced Labor; and List of Products Produced by Forced or Indentured Child Labor. Contains data from the 2016-2022 reporting cycles.",
+    "tags": ["age", "education", "inspection", "penalties", "sector", "violations", "other countries"]
+  },
+  {
+    "name": "ImportWatch_Goods_HS",
+    "agency": "ILAB",
+    "endpoint": "ImportWatch_Goods_HS",
+    "description": "Matches essential information on foreign labor abuses from ILAB's reports with U.S. import trade data, including Harmonized Tariff Schedule Codes, to help identify high-risk imports and strengthen compliance with U.S. labor standards.",
+    "tags": []
+  },
+  {
+    "name": "ImportWatch_Core_Data",
+    "agency": "ILAB",
+    "endpoint": "ImportWatch_Core_Data",
+    "description": "Combines data from ILAB's essential reporting with U.S. import trade data to identify high-risk imports and strengthen compliance with U.S. labor standards.",
+    "tags": []
+  },
+  {
+    "name": "ImportWatch_Country_Codes",
+    "agency": "ILAB",
+    "endpoint": "ImportWatch_Country_Codes",
+    "description": "Country code reference data for ImportWatch datasets that match foreign labor abuse information with U.S. import trade data.",
+    "tags": []
+  },
+  {
+    "name": "LaborShield_ReportingData",
+    "agency": "ILAB",
+    "endpoint": "LaborShield_ReportingData",
+    "description": "Information on foreign labor abuses from ILAB's three flagship reports. Helps companies assess supply chains and flag risks early to prevent operational disruptions, reputational damage, or legal challenges.",
+    "tags": []
+  },
+  {
+    "name": "LaborShield_Goods",
+    "agency": "ILAB",
+    "endpoint": "LaborShield_Goods",
+    "description": "Goods-related data from ILAB's labor abuse reports. Helps companies assess supply chain risks related to child labor and forced labor.",
+    "tags": []
+  },
+  {
+    "name": "LaborShield_SuggestedActions",
+    "agency": "ILAB",
+    "endpoint": "LaborShield_SuggestedActions",
+    "description": "Suggested actions for companies to address labor abuse risks in their supply chains based on ILAB's reporting data.",
+    "tags": []
+  },
+  {
+    "name": "National Database of Childcare Prices (NDCP)",
+    "agency": "WB",
+    "endpoint": "ndcp",
+    "description": "The most comprehensive federal source of childcare prices at the county level. Offers childcare price data by provider type, age of children, and county characteristics. Data available from 2008 to 2022.",
+    "tags": ["county", "expenditures", "childcare", "persons"]
+  },
+  {
+    "name": "Accident",
+    "agency": "MSHA",
+    "endpoint": "accident",
+    "description": "Information on all accidents, injuries and illnesses reported by mine operators and contractors beginning on 1/1/1983. Obtained from Mine Accident, Injury and Illness Report form (MSHA Form 7000-1). Includes type, mine location, lost days and degree of injury.",
+    "tags": ["accidents", "contractors", "controllers", "fatalities", "injury or illness", "mines", "occupations", "operators", "state"]
+  },
+  {
+    "name": "Address of Records - Mines",
+    "agency": "MSHA",
+    "endpoint": "address_of_records_mines",
+    "description": "Mine addresses for all mines in the database except for Abandoned mines prior to 1998. Address entered by mine operator when Legal ID form is completed. Note: Address of Record is not necessarily the same as Mine Location Address.",
+    "tags": ["address", "industries", "mines", "state"]
+  },
+  {
+    "name": "Assessed Violations",
+    "agency": "MSHA",
+    "endpoint": "assessed_violations",
+    "description": "Violations that have been assessed penalties by MSHA, and issued on or after 1/1/1995. Includes Citation Number, Violator ID, Violator Name, Proposed Penalty Amount, Current Assessment Amount, Paid Proposed Penalty Amount, Bill Print Date, Final Order Date, Last Action Code, Last Action Date.",
+    "tags": ["citations", "mines", "penalties", "violations", "violators"]
+  },
+  {
+    "name": "Contractor Name ID Lookup",
+    "agency": "MSHA",
+    "endpoint": "contractor_name_id_lookup",
+    "description": "Lists all MSHA registered mining contractors with Contractor Name and Contractor ID.",
+    "tags": ["contractors", "mines"]
+  },
+  {
+    "name": "Contractor Employment / Production (Annual)",
+    "agency": "MSHA",
+    "endpoint": "contractor_employment_production_annual",
+    "description": "Annual summation of employee hours and coal production reported by contractors where average quarterly employment is greater than zero, grouped by calendar year, subunit code and mine ID beginning on 1/1/1983.",
+    "tags": ["commodities", "contractors", "employment", "hours", "mines", "production"]
+  },
+  {
+    "name": "Controller History",
+    "agency": "MSHA",
+    "endpoint": "controller_history",
+    "description": "History of controllers at mining operators.",
+    "tags": ["controllers", "mines", "operators"]
+  },
+  {
+    "name": "Commodity Lookup",
+    "agency": "MSHA",
+    "endpoint": "commodity_lookup",
+    "description": "List of MSHA Commodities and Commodity Codes (SIC; NAICS).",
+    "tags": ["commodities", "industries", "mines"]
+  },
+  {
+    "name": "Operator Employment / Production (Annual)",
+    "agency": "MSHA",
+    "endpoint": "operator_employment_production_annual",
+    "description": "Annual summation of employee hours and coal production reported by mine operators where average quarterly employment is greater than zero, grouped by calendar year, subunit code and mine ID beginning on 1/1/1983.",
+    "tags": ["employment", "hours", "mines", "operators", "production"]
+  },
+  {
+    "name": "Inspection",
+    "agency": "MSHA",
+    "endpoint": "inspection",
+    "description": "Every mine inspection conducted by MSHA beginning on 1/1/1983. Includes name of mine inspected, MSHA's internal inspection number (event number), type of inspection and start/end dates of inspection.",
+    "tags": ["controllers", "industries", "inspection", "mines", "operators", "state"]
+  },
+  {
+    "name": "Mines",
+    "agency": "MSHA",
+    "endpoint": "mines",
+    "description": "All Coal and Metal/Non-Metal mines under MSHA's jurisdiction since 1/1/1970. Includes current status (Active, Abandoned, NonProducing, etc.), current owner and operating company, commodity codes and physical attributes. Includes Abandoned or Abandoned and Sealed Mines.",
+    "tags": ["controllers", "county", "geospatial", "industries", "mines", "operators", "state"]
+  },
+  {
+    "name": "Contractor History at Mines",
+    "agency": "MSHA",
+    "endpoint": "contractor_history_at_mines",
+    "description": "Contractor history at Mines showing Contractor ID, Contractor Name, Mine ID, Contractor Start Date at the Mine and Contractor End Date at the Mine.",
+    "tags": ["contractors", "mines"]
+  },
+  {
+    "name": "Operator History at Mines",
+    "agency": "MSHA",
+    "endpoint": "operator_history_at_mines",
+    "description": "Operator history at Mines showing Operator ID, Operator Name, Mine ID, Operator Start Date at the Mine and Operator End Date at the Mine.",
+    "tags": ["mines", "operators"]
+  },
+  {
+    "name": "Contractor Employment / Production (Quarterly)",
+    "agency": "MSHA",
+    "endpoint": "contractor_employment_production_quarterly",
+    "description": "Employment and coal production reported by contractors for each quarter in a calendar year, by subunit and mine ID, starting with 1983.",
+    "tags": ["commodities", "contractors", "employment", "hours", "mines", "production"]
+  },
+  {
+    "name": "Operator Employment / Production (Quarterly)",
+    "agency": "MSHA",
+    "endpoint": "operator_employment_production_quarterly",
+    "description": "Employment and coal production reported by mine operators for each quarter in a calendar year, by subunit and mine ID beginning on 1/1/1983.",
+    "tags": ["employment", "hours", "mines", "operators", "production"]
+  },
+  {
+    "name": "Violation",
+    "agency": "MSHA",
+    "endpoint": "violation",
+    "description": "Violations issued as a result of MSHA enforcement during inspections. Each inspection has unique Event Number associated with violations. Includes violator name, violation date, issue date, citation/order/safeguard details, Section of Act, CFR standard, and conditions/practices that caused violations.",
+    "tags": ["contractors", "controllers", "injury or illness", "inspection", "mines", "violations", "violators"]
+  },
+  {
+    "name": "Enforcement",
+    "agency": "WHD",
+    "endpoint": "enforcement",
+    "description": "All concluded WHD compliance actions since FY 2005. Includes whether violations were found, back wage amount, number of employees due back wages, and civil money penalties assessed. NOTE: Findings Start/End Date are not equal to Case Open/Close Date.",
+    "tags": ["address", "back wages", "compliance", "industries", "inspection", "penalties", "state", "violations"]
+  },
+  {
+    "name": "Accident Lookup2",
+    "agency": "OSHA",
+    "endpoint": "accident_lookup2",
+    "description": "Code tables that assist in evaluating other OSHA accident related datasets.",
+    "tags": ["accidents", "fatalities", "injury or illness", "occupations"]
+  },
+  {
+    "name": "Accident",
+    "agency": "OSHA",
+    "endpoint": "accident",
+    "description": "Information regarding accident investigations completed by OSHA, including narrative text about the accident.",
+    "tags": ["accidents", "fatalities", "industries", "state"]
+  },
+  {
+    "name": "Accident Abstract",
+    "agency": "OSHA",
+    "endpoint": "accident_abstract",
+    "description": "Summary information about accidents investigated by OSHA.",
+    "tags": ["accidents"]
+  },
+  {
+    "name": "Accident Injury",
+    "agency": "OSHA",
+    "endpoint": "accident_injury",
+    "description": "Information about accident injuries reported to OSHA, including circumstances of accident and information about injured person. Refer to the Accident Lookup2 Dataset for Code Associations.",
+    "tags": ["accidents", "age", "fatalities", "injury or illness", "occupations", "sex"]
+  },
+  {
+    "name": "Inspection",
+    "agency": "OSHA",
+    "endpoint": "inspection",
+    "description": "Inspection case detail for approximately 100,000 OSHA inspections conducted annually. Includes information about why the inspection was conducted.",
+    "tags": ["address", "industries", "inspection", "labor unions", "state"]
+  },
+  {
+    "name": "Optional Code Info",
+    "agency": "OSHA",
+    "endpoint": "optional_code_info",
+    "description": "Optional information collected for OSHA inspections.",
+    "tags": ["inspection"]
+  },
+  {
+    "name": "Related Activity",
+    "agency": "OSHA",
+    "endpoint": "related_activity",
+    "description": "Information on activities (Complaints, Referrals, Accidents and Inspections) related to OSHA inspections.",
+    "tags": ["accidents", "complaints", "inspection"]
+  },
+  {
+    "name": "Emphasis Codes",
+    "agency": "OSHA",
+    "endpoint": "emphasis_codes",
+    "description": "Emphasis program codes related to OSHA inspections, such as national, strategic, local and state emphasis programs.",
+    "tags": ["inspection"]
+  },
+  {
+    "name": "Violation",
+    "agency": "OSHA",
+    "endpoint": "violation",
+    "description": "Details about violations and penalty assessments resulting from OSHA inspections, including type and seriousness of violations.",
+    "tags": ["abatements", "citations", "inspection", "penalties", "violations"]
+  },
+  {
+    "name": "Violation Event",
+    "agency": "OSHA",
+    "endpoint": "violation_event",
+    "description": "Details regarding current status of OSHA violations, including penalty, abatement and settlement.",
+    "tags": ["abatements", "citations", "inspection", "penalties", "violations"]
+  },
+  {
+    "name": "Violation Gen Duty Std",
+    "agency": "OSHA",
+    "endpoint": "violation_gen_duty_std",
+    "description": "Information about citations of OSHA's general duty standard (5a1) including narrative text.",
+    "tags": ["citations", "inspection"]
+  },
+  {
+    "name": "Office of the Chief Accountant Case Tracking System (OCATS)",
+    "agency": "EBSA",
+    "endpoint": "ocats",
+    "description": "Closed cases that resulted in penalty assessments by EBSA since 2000. Provides information on EBSA's enforcement programs to enforce ERISA's Form 5500 Annual Return/Report filing requirement focusing on deficient filers, late filers and non-filers.",
+    "tags": ["investigation", "penalties", "state", "plans", "employers"]
+  },
+  {
+    "name": "OTAA Petition",
+    "agency": "ETA",
+    "endpoint": "otaa_petition",
+    "description": "Trade Adjustment Assistance (TAA) Program data. Note: On July 1, 2022, the termination provision under Section 285(a) of the Trade Act of 1974 took effect. Department may not issue determinations or accept new petitions, so there will not be meaningful updates to this dataset.",
+    "tags": ["geospatial", "industries", "state", "trade", "services", "determinations", "certifications", "termination", "denial"]
+  },
+  {
+    "name": "Apprenticeship Participant Characteristics and Training Outcomes",
+    "agency": "ETA",
+    "endpoint": "apprenticeship_data",
+    "description": "Information across the apprenticeship participation lifecycle, describing characteristics, activities and outcomes of new, active, and exiting apprentices. Includes age cohorts, gender, race, veteran status, education demographics, and state data from registered apprenticeship partners.",
+    "tags": ["age", "back wages", "county", "disability", "education", "industries", "labor unions", "occupations", "race/ethnicity", "sex", "state", "veterans", "participant"]
+  },
+  {
+    "name": "VETS 4212 Federal Contractor Reporting",
+    "agency": "VETS",
+    "endpoint": "4212",
+    "description": "Required veteran employment data by federal contractors/subcontractors who report annually on number of employees in their workforces who are veterans covered under Vietnam Era Veterans' Readjustment Assistance Act (VEVRAA). Data reported through form VETS-4212.",
+    "tags": ["address", "contractors", "county", "employment", "industries", "occupations", "state", "veterans"]
+  },
+  {
+    "name": "Unemployment Insurance National Weekly Claims",
+    "agency": "ETA",
+    "endpoint": "ui_national_weekly_claims",
+    "description": "Weekly unemployment insurance (UI) claims reported by each state's UI program offices. Used for monitoring workload volume, assessing state program operations, and labor market conditions. Note: Updates lag publication by no less than 30 minutes.",
+    "tags": ["unemployment", "claims", "employees"]
+  },
+  {
+    "name": "Unemployment Insurance State Weekly Claims",
+    "agency": "ETA",
+    "endpoint": "ui_state_weekly_claims",
+    "description": "Unemployment Insurance claims data from ETA 539 report used in current economic analysis of unemployment trends in the Nation and each state. Initial claims measure emerging unemployment and continued weeks claimed measure insured unemployed.",
+    "tags": ["state", "unemployment", "claims", "employees"]
+  },
+  {
+    "name": "Training Dataset (Industries)",
+    "agency": "TRNG",
+    "endpoint": "training_dataset_industries",
+    "description": "A training dataset featured in the 'Conditional Filtering' section of the API User Guide. Created to help API users practice writing json formatted string for the 'filter_object' parameter.",
+    "tags": []
+  }
+]

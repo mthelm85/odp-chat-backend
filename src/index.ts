@@ -2,7 +2,6 @@ import "dotenv/config";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { ChatRequestBody } from "./types.js";
-import { isOnTopic, OFF_TOPIC_MESSAGE } from "./guardrails.js";
 import { handleChat } from "./chat.js";
 
 const app = express();
@@ -38,16 +37,6 @@ app.post("/chat", async (req: Request, res: Response) => {
     let validHistory = history;
     if (history.length > 20) {
       validHistory = history.slice(-20);
-    }
-
-    // Check if on-topic
-    const onTopic = await isOnTopic(message);
-    if (!onTopic) {
-      res.status(200).json({
-        type: "off_topic",
-        message: OFF_TOPIC_MESSAGE,
-      });
-      return;
     }
 
     // Set SSE headers

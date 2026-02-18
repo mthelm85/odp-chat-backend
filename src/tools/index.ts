@@ -1,62 +1,21 @@
 import Anthropic from "@anthropic-ai/sdk";
-import {
-  handleListDatasets,
-  handleGetMetadata,
-  handleQueryData,
-} from "./handlers.js";
+import { handleQueryData } from "./handlers.js";
 
 export const tools: Anthropic.Tool[] = [
   {
-    name: "list_datasets",
-    description:
-      "Browse the Department of Labor Data Catalog to find available datasets. Returns agency names, dataset names, and API endpoint URLs. Results are paginated (default page 1). Use the agency 'abbr' and 'api_url' values from the response as the 'agency' and 'endpoint' parameters in get_metadata and query_data.",
-    input_schema: {
-      type: "object",
-      properties: {
-        page: {
-          type: "number",
-          description: "Page number for pagination (default 1)",
-        },
-      },
-    },
-  },
-  {
-    name: "get_metadata",
-    description:
-      "Get the metadata (column names, types, descriptions) for a specific DOL dataset. Use list_datasets first to find the agency abbreviation and endpoint name.",
-    input_schema: {
-      type: "object",
-      properties: {
-        agency: {
-          type: "string",
-          description: "Agency abbreviation (e.g., 'OSHA', 'MSHA', 'WHD')",
-        },
-        endpoint: {
-          type: "string",
-          description: "Dataset endpoint name from list_datasets",
-        },
-        format: {
-          type: "string",
-          description: "Response format (default: 'json')",
-        },
-      },
-      required: ["agency", "endpoint"],
-    },
-  },
-  {
     name: "query_data",
     description:
-      "Query records from a DOL dataset. Supports pagination, field selection, sorting, and conditional filtering. Use list_datasets to find agency/endpoint, and get_metadata to discover available fields. For filter_object: single condition: {\"field\":\"year\",\"operator\":\"eq\",\"value\":\"2022\"}. AND/OR: {\"and\":[...]} / {\"or\":[...]}. Operators: eq, neq, gt, lt, in, not_in, like.",
+      "Query records from a DOL dataset. The dataset catalog with all available agencies and endpoints is provided in your system prompt. Supports pagination, field selection, sorting, and conditional filtering. For filter_object: single condition: {\"field\":\"year\",\"operator\":\"eq\",\"value\":\"2022\"}. AND/OR: {\"and\":[...]} / {\"or\":[...]}. Operators: eq, neq, gt, lt, in, not_in, like (use % as wildcard).",
     input_schema: {
       type: "object",
       properties: {
         agency: {
           type: "string",
-          description: "Agency abbreviation",
+          description: "Agency abbreviation (e.g., 'OSHA', 'MSHA', 'WHD', 'ETA', 'ILAB', 'WB', 'VETS', 'EBSA', 'TRNG')",
         },
         endpoint: {
           type: "string",
-          description: "Dataset endpoint name",
+          description: "Dataset endpoint name from the catalog in your system prompt",
         },
         format: {
           type: "string",
@@ -64,19 +23,19 @@ export const tools: Anthropic.Tool[] = [
         },
         limit: {
           type: "number",
-          description: "Maximum number of records to return",
+          description: "Maximum number of records to return (default: 10, max: 10000)",
         },
         offset: {
           type: "number",
-          description: "Number of records to skip (for pagination)",
+          description: "Number of records to skip for pagination (default: 0)",
         },
         fields: {
           type: "string",
-          description: "Comma-separated list of field names to return",
+          description: "Comma-separated list of field names to return (e.g., 'case_id,trade_nm,city_nm'). Omit to return all fields.",
         },
         sort: {
           type: "string",
-          description: "Sort direction ('asc' or 'desc')",
+          description: "Sort direction: 'asc' for ascending, 'desc' for descending",
         },
         sort_by: {
           type: "string",
@@ -84,7 +43,7 @@ export const tools: Anthropic.Tool[] = [
         },
         filter_object: {
           type: "string",
-          description: "JSON string for filtering records",
+          description: "JSON filter string for conditional filtering. Examples: {\"field\":\"state\",\"operator\":\"eq\",\"value\":\"CA\"} or {\"and\":[{\"field\":\"year\",\"operator\":\"gt\",\"value\":\"2020\"},{\"field\":\"state\",\"operator\":\"eq\",\"value\":\"TX\"}]}",
         },
       },
       required: ["agency", "endpoint"],
@@ -93,7 +52,5 @@ export const tools: Anthropic.Tool[] = [
 ];
 
 export const toolHandlers: Record<string, (input: any) => Promise<any>> = {
-  list_datasets: handleListDatasets,
-  get_metadata: handleGetMetadata,
   query_data: handleQueryData,
 };
