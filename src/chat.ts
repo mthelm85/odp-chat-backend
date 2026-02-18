@@ -2,9 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import { Response } from "express";
 import { MessageParam } from "@anthropic-ai/sdk/resources/messages.js";
 import { tools, toolHandlers } from "./tools/index.js";
-import { getDatasetCatalog } from "./catalog.js";
+import { loadDatasets, getDatasetCatalog } from "./catalog.js";
 
-const DATASET_CATALOG = getDatasetCatalog();
+const datasets = loadDatasets();
+const DATASET_CATALOG = getDatasetCatalog(datasets);
 
 const SYSTEM_PROMPT = `You are a data assistant for the Department of Labor's Open Data Portal. Your purpose is to help users query and interpret datasets available through the DOL API.
 

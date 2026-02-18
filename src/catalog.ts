@@ -1,6 +1,6 @@
 import datasetsJson from "./data/datasets.json" assert { type: "json" };
 
-interface Dataset {
+export interface Dataset {
   name: string;
   agency: string;
   endpoint: string;
@@ -8,7 +8,12 @@ interface Dataset {
   tags: string[];
 }
 
-const datasets: Dataset[] = datasetsJson as Dataset[];
+/**
+ * Load datasets from JSON file
+ */
+export function loadDatasets(): Dataset[] {
+  return datasetsJson as Dataset[];
+}
 
 /**
  * Generate the dataset catalog in TOON format for inclusion in system prompt.
@@ -16,7 +21,7 @@ const datasets: Dataset[] = datasetsJson as Dataset[];
  *
  * Format: agency/endpoint|name|description|tags
  */
-export function getDatasetCatalog(): string {
+export function getDatasetCatalog(datasets: Dataset[]): string {
   let catalog = "## Available DOL Datasets\n\n";
   catalog += "Format: agency/endpoint|name|description|tags\n\n";
 
@@ -34,6 +39,6 @@ export function getDatasetCatalog(): string {
 /**
  * Get list of all dataset endpoints for validation
  */
-export function getAllEndpoints(): { agency: string; endpoint: string }[] {
+export function getAllEndpoints(datasets: Dataset[]): { agency: string; endpoint: string }[] {
   return datasets.map(ds => ({ agency: ds.agency, endpoint: ds.endpoint }));
 }
